@@ -21,32 +21,29 @@ Comparing of two images is done in two steps:
 The training set consist of two files, xtrain_challenge.csv and xtest_challenge.csv.
 
 File xtrain_challenge.csv contains one observation per row which contains following entries based on a pair of images:
+- columns 1-13 - 13 qualities on first image;
+- columns 14-26 - 13 qualities on second image;
+- columns 27-37 - 11 matching scores between the two images.
 
-columns 1-13 - 13 qualities on first image;
-columns 14-26 - 13 qualities on second image;
-columns 27-37 - 11 matching scores between the two images.
 File ytrain_challenge.csv contains one line with each entry corresponding to one observation in xtrain_challenge.csv, maintaining the order, and has '1' if a pair of images belong to the same person and '0' otherwise.
 
 For each of these 38 variables, there are in total 9,800,713 training observations.
-
-Training data, input (file xtrain_challenge.csv):
-https://www.dropbox.com/s/618rb0wev4q84kj/xtrain_challenge.csv
-
-Training data, output (file ytrain_challenge.csv):
-https://www.dropbox.com/s/oph3w9sn3nmu376/ytrain_challenge.csv
+- Training data, input (file xtrain_challenge.csv): https://www.dropbox.com/s/618rb0wev4q84kj/xtrain_challenge.csv
+- Training data, output (file ytrain_challenge.csv): https://www.dropbox.com/s/oph3w9sn3nmu376/ytrain_challenge.csv
 
 ##### Test data:
 File xtest_challenge.csv has the same structure as file xtrain_challenge.csv.
 There are in total 3,768,311 test observations.
 
-Test data, input (file xtest_challenge.csv):
-https://www.dropbox.com/s/fezxb6lrzass556/xtest_challenge.csv
+Test data, input (file xtest_challenge.csv): https://www.dropbox.com/s/fezxb6lrzass556/xtest_challenge.csv
 
 
 #### The performance criterion¶
 Consider the problem of the supervised classification with two classes labeled '0' and '1'. Many methods for supervised classification assign a new observation x to a class using the following rule:
 
-g(x)={10 if f(x)≥t, otherwise.(1)
+g(x)= 1 if f(x)≥t
+g(x)= 0 otherwise 
+
 Threshold t is then chosen due to specific needs managing the trade-off between the true positive rate (TPR) and the false positive rate (FPR), depending on the cost of the corresponding mistakes.
 
 Here, the performance criterion is TPR for the value of FPR = 10−4, or, speaking in other words, one needs to maximize the value of the receiver operating characteristic (ROC) in the point FPR = 10−4. The submitted solution file should thus contain the score for each observation.
